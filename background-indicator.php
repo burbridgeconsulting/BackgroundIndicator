@@ -1,15 +1,15 @@
 <?php
 /*
-Plugin Name: TODO
-Plugin URI: TODO
-Description: TODO
-Version: 1.0
-Author: TODO
-Author URI: TODO
-Author Email: TODO
+Plugin Name: Background Indicator
+Plugin URI: http://chrisburbridge.com/plugins/background-indicator
+Description: Displays all visible elements on a page that have CSS background settings applied to them. Allows you to see where you might want to put custom CSS, to modify backgrounds.
+Version: 0.1
+Author: Chris Burbridge
+Author URI: http://chrisburbridge.com
+Author Email: chris@chrisburbridge.com
 License:
 
-  Copyright 2013 TODO (email@domain.com)
+  Copyright 2013 Chris Burbridge (chris@chrisburbridge.com)
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License, version 2, as
@@ -26,8 +26,7 @@ License:
 
 */
 
-// TODO: rename this class to a proper name for your plugin
-class PluginName {
+class BackgroundIndicator {
 
 	/*--------------------------------------------*
 	 * Constructor
@@ -180,5 +179,4 @@ class PluginName {
 
 } // end class
 
-// TODO:	Update the instantiation call of your plugin to the name given at the class definition
-$plugin_name = new PluginName();
+$plugin_name = new BackgroundIndicator();
