@@ -1,1 +1,20 @@
 /* This stylesheet is used to style the public view of the plugin. */
+
+#cbbi-console {
+	position: fixed;
+	top: 20px;
+	left: 22px;
+	background: rgba(0,0,0,.3);
+/*	height: 80px;*/
+	width: 230px;
+	border: 1px solid rgba(0,0,0,.8);
+	color: #fff;
+	padding: 12px;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	z-index: 10000;
+}
+
+#cbbi-console p {
+	margin: .6em 0;
+}
