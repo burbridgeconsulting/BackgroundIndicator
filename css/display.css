@@ -2,11 +2,11 @@
 
 #cbbi-console {
 	position: fixed;
-	top: 20px;
-	left: 22px;
-	background: rgba(0,0,0,.3);
+	top: 12px;
+	left: 12px;
+	background: rgba(40,40,40,.5);
 /*	height: 80px;*/
-	width: 230px;
+	width: 350px;
 	border: 1px solid rgba(0,0,0,.8);
 	color: #fff;
 	padding: 12px;
@@ -17,4 +17,19 @@
 
 #cbbi-console p {
 	margin: .6em 0;
+}
+
+#cbbi-console th {
+	word-wrap: break-word;
+	text-align: center;
+	vertical-align: bottom;
+	padding: 4px;
+}
+
+#cbbi-console table > * > * > *:nth-child(1),
+#cbbi-console table > * > * > *:nth-child(2),
+#cbbi-console table > * > * > *:nth-child(3),
+#cbbi-console table > * > * > *:nth-child(4) {
+	width: 25px !important;
+	text-align: center;
 }
