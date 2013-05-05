@@ -2,9 +2,13 @@
 	"use strict";
 	$(function () {
 		
-		$('html').append('<div id="cbbi-console"><h3>Elements with Background Set</h3><table></table></div>');
+		$('html').append('<div id="cbbi-console"><h3>Elements with Background Set</h3><table class="options"></table></div>');
 		
 		$('#cbbi-console table').append( '<thead><tr><th>Color / Transp.</th><th>Opacity</th><th>Round Corners</th><th>Highlight</th><th>&nbsp;</th></tr></thead><tbody></tbody>' );
+		
+		$('#cbbi-console table').after(
+			"<p><input type='checkbox' class='bg-img' />Try full-stretch background image</p>"
+		);		
 		
 		$('html, body, div').each(function() {
 			
@@ -85,6 +89,16 @@
 						setColor = backgroundCSS;
 			    }
 					$(selector).css( 'background-color', setColor );
+				}
+
+				else if ( $(this).hasClass('bg-img') ) {
+					bgImg = '../images/sunflower-94187_1920.jpg';
+			    if ($this.is(':checked')) {
+						$.backstretch( bgImg );
+			    } else {
+						$('html').css('background-image', 'none');
+			    }
+
 				}
 		});
 		

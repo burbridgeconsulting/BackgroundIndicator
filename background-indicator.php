@@ -53,7 +53,8 @@ class BackgroundIndicator {
 		register_deactivation_hook( __FILE__, array( $this, 'deactivate' ) );
 		register_uninstall_hook( 'uninstall.php', 'cb_bi_uninstall' );
 
-		// Here is where hooks would be, if we needed any
+		// Add script head to pass site url to JS
+		add_action( 'wp_head', array( $this, 'js_url' ) );
 
 	} // end constructor
 
@@ -130,8 +131,16 @@ class BackgroundIndicator {
 	 */
 	public function register_plugin_scripts() {
 		wp_enqueue_script( 'jquery-color', plugins_url( 'background-indicator/js/jquery.color.js' ), array('jquery') );
-		wp_enqueue_script( 'background-indicator-plugin-script', plugins_url( 'background-indicator/js/display.js' ), array('jquery','jquery-color') );
+		wp_enqueue_script( 'jquery-backstretch', plugins_url( 'background-indicator/js/jquery.color.js' ), array('jquery') );
+		wp_enqueue_script( 'background-indicator-plugin-script', plugins_url( 'background-indicator/js/display.js' ), array('jquery','jquery-color','jquery-backstretch') );
 	} // end register_plugin_scripts
+	
+	function js_url() {
+		$script   = '<script type="text/javascript">';
+		$script  .= '	var pluginUrl = "' . plugins_url( '', __FILE__ ) . '"';
+		$script  .= '</script>';
+		echo $script;
+	}
 
 } // end class
 
