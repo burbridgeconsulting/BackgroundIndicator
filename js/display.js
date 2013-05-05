@@ -92,14 +92,14 @@
 				}
 
 				else if ( $(this).hasClass('bg-img') ) {
-					bgImg = '../images/sunflower-94187_1920.jpg';
-			    if ($this.is(':checked')) {
-						$.backstretch( bgImg );
-			    } else {
-						$('html').css('background-image', 'none');
-			    }
-
+						var bgImg = pluginUrl + '/images/sunflower-94187_1920.jpg';
+						if ($this.is(':checked')) {
+							$.backstretch( bgImg );
+						} else {
+							$('div.backstretch').remove();
+						}
 				}
+				
 		});
 		
 		
