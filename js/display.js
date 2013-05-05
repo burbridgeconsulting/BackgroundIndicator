@@ -2,7 +2,7 @@
 	"use strict";
 	$(function () {
 		
-		$('html').append('<div id="cbbi-console"><h3>Elements with Background Set</h3><table class="options"></table></div>');
+		$('html').append('<div id="cbbi-console"><div id="hider"/><div id="css-result"/><h3>Elements with Background Set</h3><table class="options"></table></div>');
 		
 		$('#cbbi-console table').append( '<thead><tr><th>Color / Transp.</th><th>Opacity</th><th>Round Corners</th><th>Highlight</th><th>&nbsp;</th></tr></thead><tbody></tbody>' );
 		
@@ -22,7 +22,7 @@
 				}
 				
 				// Ignore my own code
-				if (! this_id.match(/^(#cbbi-console|#debug-bar-info|#debug-bar-menu|#querylist|#wpadminbar|)$/) ) {
+				if (! this_id.match(/^(#cbbi-console|#debug-bar-info|#debug-bar-menu|#querylist|#wpadminbar|#hider|)$/) ) {
 					
 					var html = '<tr data-selector="' + this_element + this_id + '" '
 						+ ' data-background-css="' + $(this).css('background-color') + '" >'
@@ -43,6 +43,8 @@
 			
 		})
 		
+		$('#cbbi-console').attr('data-orig-height', $('#cbbi-console').height());
+		$('#cbbi-console').attr('data-orig-width', $('#cbbi-console').width());
 		
 		$('#cbbi-console :checkbox').click(function() {
 		    var $this = $(this);
@@ -84,7 +86,7 @@
 					var setColor;
 					backgroundCSS = $(this).parents('tr').attr('data-background-css');
 			    if ($this.is(':checked')) {
-						setColor = jQuery.Color( backgroundCSS ).alpha('.75');
+						setColor = jQuery.Color( backgroundCSS ).alpha('.85');
 			    } else {
 						setColor = backgroundCSS;
 			    }
@@ -102,6 +104,27 @@
 				
 		});
 		
+		$('#cbbi-console #hider').click(function() {
+			$(this).toggleClass('collapsed');
+			var bWidth;
+			var bHeight;
+			if ($(this).hasClass('collapsed')) {
+				bWidth = '11px';
+				bHeight = '11px';
+				$(this).parent().css('padding', '0');
+			} else {
+				bWidth = $(this).parent().attr('data-orig-width');
+				bHeight = $(this).parent().attr('data-orig-height');
+				$(this).parent().css('padding', '12px');
+			}
+			
+			$(this).parent().animate({
+			    width: bWidth,
+			    height: bHeight
+			  }, 230, 'easeInOutCubic', function() {
+			    // Animation complete.
+			  });				
+		})
 		
 	});
 }(jQuery));
