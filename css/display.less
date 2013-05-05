@@ -1,0 +1,47 @@
+/* This stylesheet is used to style the public view of the plugin. */
+
+@import normalize.css;
+
+#cbbi-console {
+	position: absolute;
+	top: 12px;
+	left: 12px;
+	background: rgba(40,40,40,.5);
+/*	height: 80px;*/
+	width: 350px;
+	border: 1px solid rgba(0,0,0,.8);
+	color: #fff;
+	padding: 12px;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	z-index: 10000;
+	
+	p {
+		margin: .6em 0;
+		color: #fff !important;
+	}
+
+	td {
+		color: #fff !important;
+		border: none;
+	}
+
+	th {
+		word-wrap: break-word;
+		text-align: center;
+		vertical-align: bottom;
+		padding: 4px;
+		border: none;
+		background: none;
+		text-transform: none;
+	}
+
+	table > * > * > *:nth-child(1),
+	table > * > * > *:nth-child(2),
+	table > * > * > *:nth-child(3),
+	table > * > * > *:nth-child(4) {
+		width: 25px !important;
+		text-align: center;
+	}
+	
+}

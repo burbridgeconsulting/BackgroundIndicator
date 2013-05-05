@@ -18,7 +18,7 @@
 				}
 				
 				// Ignore my own code
-				if (this_id != '#cbbi-console') {
+				if (! this_id.match(/^(#cbbi-console|#debug-bar-info|#debug-bar-menu|#querylist|#wpadminbar|)$/) ) {
 					
 					var html = '<tr data-selector="' + this_element + this_id + '">'
 						+ '<td><input class="bg-changer" id="block-" type="checkbox" checked="checked"' 

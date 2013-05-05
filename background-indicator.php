@@ -114,7 +114,15 @@ class BackgroundIndicator {
 	 * Registers and enqueues plugin-specific styles.
 	 */
 	public function register_plugin_styles() {
-		wp_enqueue_style( 'background-indicator-plugin-styles', plugins_url( 'background-indicator/css/display.css' ) );
+		require 'lessphp/lessc.inc.php';
+		$less = new lessc;
+		
+		$less->checkedCompile( plugin_dir_path( __FILE__ ) . "css/normalize.less", 
+			plugin_dir_path( __FILE__ ) . "css/normalize.css");
+		$less->checkedCompile( plugin_dir_path( __FILE__ ) . "css/display.less", 
+			plugin_dir_path( __FILE__ ) . "css/display.css");
+		
+		wp_enqueue_style( 'background-indicator-plugin-styles', plugins_url( 'background-indicator/css/display.css' ));
 	} // end register_plugin_styles
 
 	/**
