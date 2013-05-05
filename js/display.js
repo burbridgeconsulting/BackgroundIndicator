@@ -2,7 +2,7 @@
 	"use strict";
 	$(function () {
 		
-		$('html').append('<div id="cbbi-console"><p><strong>Elements with Background Set</strong></p><table></table></div>');
+		$('html').append('<div id="cbbi-console"><h3>Elements with Background Set</h3><table></table></div>');
 		
 		$('#cbbi-console table').append( '<thead><tr><th>Color / Transp.</th><th>Opacity</th><th>Round Corners</th><th>Highlight</th><th>&nbsp;</th></tr></thead><tbody></tbody>' );
 		
@@ -20,11 +20,9 @@
 				// Ignore my own code
 				if (! this_id.match(/^(#cbbi-console|#debug-bar-info|#debug-bar-menu|#querylist|#wpadminbar|)$/) ) {
 					
-					var html = '<tr data-selector="' + this_element + this_id + '">'
-						+ '<td><input class="bg-changer" id="block-" type="checkbox" checked="checked"' 
-						+ ' data-background-css="'
-						+ $(this).css('background-color')
-						+ '"/></td>'
+					var html = '<tr data-selector="' + this_element + this_id + '" '
+						+ ' data-background-css="' + $(this).css('background-color') + '" >'
+						+ '<td><input class="bg-changer" id="block-" type="checkbox" checked="checked"/></td>'
 						+ '<td><input class="alphaChannel" type="checkbox" /></td>'
 						+ '<td><input class="rounded" type="checkbox" /></td>'
 						+ '<td><input class="highlight" type="checkbox" /></td>'
@@ -49,7 +47,7 @@
 				if ( $(this).hasClass('bg-changer') ) {
 					var backgroundCSS;
 			    if ($this.is(':checked')) {
-						backgroundCSS = $(this).attr('data-background-css');
+						backgroundCSS = $(this).parents('tr').attr('data-background-css');
 			    } else {
 						backgroundCSS = 'transparent';
 			    }
@@ -84,8 +82,9 @@
 			    if ($this.is(':checked')) {
 						setColor = jQuery.Color( bgColor ).alpha('.8');
 			    } else {
-						setColor = 1;
+						setColor = bgColor;
 			    }
+					alert(bgColor);
 					$(selector).css( 'background-color', setColor );
 				}
 		});
