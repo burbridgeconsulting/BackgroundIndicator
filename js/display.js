@@ -78,13 +78,12 @@
 
 				else if ( $(this).hasClass('alphaChannel') ) {
 					var setColor;
-					var bgColor = $(this).attr('data-background-css');
+					backgroundCSS = $(this).parents('tr').attr('data-background-css');
 			    if ($this.is(':checked')) {
-						setColor = jQuery.Color( bgColor ).alpha('.8');
+						setColor = jQuery.Color( backgroundCSS ).alpha('.75');
 			    } else {
-						setColor = bgColor;
+						setColor = backgroundCSS;
 			    }
-					alert(bgColor);
 					$(selector).css( 'background-color', setColor );
 				}
 		});
