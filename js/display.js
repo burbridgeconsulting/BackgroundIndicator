@@ -79,13 +79,14 @@
 				}
 
 				else if ( $(this).hasClass('alphaChannel') ) {
-					var fade;
+					var setColor;
+					var bgColor = $(this).attr('data-background-css');
 			    if ($this.is(':checked')) {
-						fade = '.5';
+						setColor = jQuery.Color( bgColor ).alpha('.8');
 			    } else {
-						fade = '1';
+						setColor = 1;
 			    }
-					$(selector).fadeTo( .3, fade )
+					$(selector).css( 'background-color', setColor );
 				}
 		});
 		

@@ -129,7 +129,8 @@ class BackgroundIndicator {
 	 * Registers and enqueues plugin-specific scripts.
 	 */
 	public function register_plugin_scripts() {
-		wp_enqueue_script( 'background-indicator-plugin-script', plugins_url( 'background-indicator/js/display.js' ), array('jquery') );
+		wp_enqueue_script( 'jquery-color', plugins_url( 'background-indicator/js/jquery.color.js' ), array('jquery') );
+		wp_enqueue_script( 'background-indicator-plugin-script', plugins_url( 'background-indicator/js/display.js' ), array('jquery','jquery-color') );
 	} // end register_plugin_scripts
 
 } // end class
