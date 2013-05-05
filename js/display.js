@@ -2,7 +2,7 @@
 	"use strict";
 	$(function () {
 		
-		$('html').append('<div id="cbbi-console"><div id="hider"/><div id="css-result"/><h3>Elements with Background Set</h3><table class="options"></table></div>');
+		$('html').append('<div id="cbbi-console"><div id="hider"/><h3>Elements with Background Set</h3><table class="options"></table><div id="css-result"/></div>');
 		
 		$('#cbbi-console table').append( '<thead><tr><th>Color / Transp.</th><th>Opacity</th><th>Round Corners</th><th>Highlight</th><th>&nbsp;</th></tr></thead><tbody></tbody>' );
 		
@@ -46,6 +46,16 @@
 		$('#cbbi-console').attr('data-orig-height', $('#cbbi-console').height());
 		$('#cbbi-console').attr('data-orig-width', $('#cbbi-console').width());
 		
+		function clearResult() {
+			$('#cbbi-console #css-result').html();
+		}
+		
+		function showResult( selector, css, value ) {
+			$('#cbbi-console #css-result').append(
+				'<p>' + selector + ' { ' + css + ': ' + value + '; }</p>'
+			)
+		}
+		
 		$('#cbbi-console :checkbox').click(function() {
 		    var $this = $(this);
 				var selector = $(this).parents('tr').attr('data-selector');
@@ -54,8 +64,11 @@
 					var backgroundCSS;
 			    if ($this.is(':checked')) {
 						backgroundCSS = $(this).parents('tr').attr('data-background-css');
+						clearResult();
 			    } else {
 						backgroundCSS = 'transparent';
+						clearResult();
+						showResult( selector, 'transparent' );
 			    }
 					$(selector).css('background-color', backgroundCSS);
 				}
@@ -64,8 +77,14 @@
 					var rounding;
 			    if ($this.is(':checked')) {
 						rounding = '17px';
+
+						clearResult();
+						showResult( selector, 'border-radius', rounding );
+						showResult( selector, '-webkit-border-radius', rounding );
+						showResult( selector, '-moz-border-radius', rounding );
 			    } else {
 						rounding = '0';
+						clearResult();
 			    }
 					$(selector).css('border-radius', rounding);
 					$(selector).css('-webkit-border-radius', rounding);
@@ -87,8 +106,11 @@
 					backgroundCSS = $(this).parents('tr').attr('data-background-css');
 			    if ($this.is(':checked')) {
 						setColor = jQuery.Color( backgroundCSS ).alpha('.85');
+						clearResult();
+						showResult( selector, 'background-color', setColor );
 			    } else {
 						setColor = backgroundCSS;
+						clearResult();
 			    }
 					$(selector).css( 'background-color', setColor );
 				}
