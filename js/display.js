@@ -47,7 +47,7 @@
 		$('#cbbi-console').attr('data-orig-width', $('#cbbi-console').width());
 		
 		function clearResult() {
-			$('#cbbi-console #css-result').html();
+			$('#cbbi-console #css-result').empty();
 		}
 		
 		function showResult( selector, css, value ) {
@@ -68,7 +68,7 @@
 			    } else {
 						backgroundCSS = 'transparent';
 						clearResult();
-						showResult( selector, 'transparent' );
+						showResult( selector, 'background-color', 'transparent' );
 			    }
 					$(selector).css('background-color', backgroundCSS);
 				}

@@ -11,6 +11,22 @@ Displays all visible elements on a page that have CSS background settings applie
 
 Displays all visible elements on a page that have CSS background settings applied to them. Allows you to see where you might want to put custom CSS, to modify backgrounds.
 
+It has so far been tested on:
+
+WordPress.org
+	TwentyEleven
+
+ElegantThemes
+	Presswork
+	Chameleon
+	Esquire
+	Flexible
+	Nimble
+	
+Presswork
+
+PageLines
+
 == Installation ==
 
 This section describes how to install the plugin and get it working.
